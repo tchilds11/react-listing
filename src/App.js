@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Search from "./components/Search";
+import { BrowserRouter as Router } from "react-router-dom";
+// import './App.css';
 
 
-class App extends Component {
-	render() {
-		return (
-			<div>
-				<Search/>
-			</div>
-		);
-	}
-}
-export default App;
+function App() {
+	return (
+	  <div className="App">
+		<Router>
+		  <Search />
+		</Router>
+	  </div>
+	);
+  }
+  
+  export default App; 
