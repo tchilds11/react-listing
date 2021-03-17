@@ -12,4 +12,4 @@ const ListingDetails = (props) => {
   );
 };
 
-export default ListingDetails;
+export default ListingDetails; 

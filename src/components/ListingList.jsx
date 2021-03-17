@@ -11,4 +11,4 @@ const ListingList = (props) => {
         </ul>
     )
 }
-export default ListingList;
+export default ListingList; 
