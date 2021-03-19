@@ -1,57 +1,44 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useState } from 'react';
+import { Route } from "react-router-dom";
 import '../Style.css';
-import ListingList from './ListingList';
 
-class Search extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            jobQuery:'',
-            jobResults: [],
-        };
-    }
+const SearchForm = ({handleListingList}) => {
+    const [jobs, setJobs] = useState('');
 
 
-    _handleChange = (e) => {
-        this.setState({
-          jobQuery: e.target.value,
-        });
+    const _handleChange = (e) => {
+        setJobs(e.target.value)
       };
     
-      _handleSubmit = async (e) => {
+    const _handleSubmit = async (e) => {
         e.preventDefault();
-        const { jobQuery } = this.state;
-        const jobResultsData = await fetch(`http://127.0.0.1:3001/jobs/?url=https://jobs.github.com/positions.json?description=${jobQuery}` ,{
+        const jobResults = await fetch(`http://127.0.0.1:3001/jobs/?url=https://jobs.github.com/positions.json?search=${jobs}` ,{
             method: 'GET',
             headers: { 'Content-Type': 'application/json'}
         }).then((response) => response.json())
-        console.log(jobResultsData);
-        this.setState({
-            jobResults: [...this.state.jobResults, jobResultsData],
-            jobQuery: '',
-        })
-      };
+        console.log(jobResults);
+        handleListingList(jobResults);
+      }
  
 
-    render() {
-        const { jobQuery } = this.state
         return (
             <>
                 <div>
-                    <form>
+                    <Route exact path='/'>
+                    <form onSubmit={_handleSubmit}>
                         <div className="container">
                             <h2 className="heading"> Listing Lurker</h2>
                             <label className="search-label" htmlFor="search-input">
-                                <input type="text" value={jobQuery} id="search-input" placeholder="Search..." onChange={this._handleChange
-                        }/>
-                                <button type="submit" onClick={this._handleSubmit} className="fa fa-search search-icon"></button>
+                                <input type="text" value={jobs} id="search-input" placeholder="Search..." onChange={_handleChange}/>
+                                <button type="submit" onClick={_handleSubmit} className="fa fa-search search-icon"></button>
                             </label>
                         </div>
                     </form>
-                    {this.state.jobResults.length ? (<ListingList jobs={this.state.jobResults}/>) : <p>No users...</p>}
+                    </Route>
                 </div>    
             </>
         )
-    }}
+    }
 
-export default Search; 
+export default SearchForm; 

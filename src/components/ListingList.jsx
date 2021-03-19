@@ -1,14 +1,19 @@
-import React from 'react';
-import ListingDetails from './ListingDetails'
+import { Link } from 'react-router-dom';
 
-const ListingList = (props) => {
-    const { jobs } = props;
+const ListingList = ({listingList}) => {
     return (
-        <ul>
-            {jobs.map(job => {
-              return  <ListingDetails job={job} key={job.id} />
-            })}
-        </ul>
-    )
-}
-export default ListingList; 
+        <>
+            <ul>
+                {listingList.map((job, index) => {
+                    return(
+                        <li key={index}>
+                            <Link to ={`/jobs/${job.url}`}>{job.title}</Link>
+                        </li>
+                    );
+                })};
+            </ul>
+        </>
+    );
+};
+
+export default ListingList;
