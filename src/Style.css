@@ -7,7 +7,8 @@
 /*Container*/
 .container {
 	margin: 36px auto;
-	width: 100%;
+	width: 50%;
+	padding: 10px;
 	max-width: 800px;
 }
 .search-label {
@@ -24,7 +25,7 @@
 }
 .search-icon {
 	position: absolute;
-	top: -10px;
+	top: 30px;
 	font-size: 24px;
 	color: rgb(47, 43, 66);
 	right: 18px;

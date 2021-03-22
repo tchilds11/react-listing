@@ -9,7 +9,7 @@ const ListingList = ({listingList}) => {
                 {listingList.map((job, index) => {
                     return(
                         <li key={index}>
-                            <Link to ={`/jobs/${job.id}`}>{job.title}</Link>
+                            <Link to ={`/jobs/${job.id}`}>{job.title} - {job.type} - {job.location}</Link>
                         </li>
                     );
                 })};

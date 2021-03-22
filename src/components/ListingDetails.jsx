@@ -24,8 +24,9 @@ const ListingDetails = ({ listingList }) => {
     return (
         <div>
             <Banner>{jobDetails.title}</Banner>
-            <img alt="" src={jobDetails.company_logo} width="300" height="300"></img>
+            <img alt="" src={jobDetails.company_logo} width="150" height="150"></img>
             <SubTitle>{jobDetails.type}</SubTitle>
+            <p>Job Description</p>
             <h4>{parse(jobDetails.description)}</h4>
         </div>
     )
