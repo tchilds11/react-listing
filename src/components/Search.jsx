@@ -13,11 +13,11 @@ const SearchForm = ({handleListingList}) => {
     
     const _handleSubmit = async (e) => {
         e.preventDefault();
-        const jobResults = await fetch(`http://127.0.0.1:3001/jobs/?url=https://jobs.github.com/positions.json?search=${jobs}` ,{
+        const jobResults = await fetch(`http://127.0.0.1:3001/jobs/?url=https://jobs.github.com/positions.json?description=${jobs}` ,{
             method: 'GET',
             headers: { 'Content-Type': 'application/json'}
         }).then((response) => response.json())
-        console.log(jobResults);
+        console.log("search results", jobResults);
         handleListingList(jobResults);
       }
  
@@ -28,7 +28,7 @@ const SearchForm = ({handleListingList}) => {
                     <Route exact path='/'>
                     <form onSubmit={_handleSubmit}>
                         <div className="container">
-                            <h2 className="heading"> Listing Lurker</h2>
+                            <h2 className="heading"> Listing Lounge</h2>
                             <label className="search-label" htmlFor="search-input">
                                 <input type="text" value={jobs} id="search-input" placeholder="Search..." onChange={_handleChange}/>
                                 <button type="submit" onClick={_handleSubmit} className="fa fa-search search-icon"></button>

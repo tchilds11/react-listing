@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 
+
+
 const ListingList = ({listingList}) => {
     return (
         <>
@@ -7,7 +9,7 @@ const ListingList = ({listingList}) => {
                 {listingList.map((job, index) => {
                     return(
                         <li key={index}>
-                            <Link to ={`/jobs/${job.url}`}>{job.title}</Link>
+                            <Link to ={`/jobs/${job.id}`}>{job.title}</Link>
                         </li>
                     );
                 })};
