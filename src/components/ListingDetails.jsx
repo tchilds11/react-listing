@@ -1,34 +1,25 @@
 import React from "react";
 // import { Link } from 'react-router-dom';
-// import parse from 'html-react-parser';
+import parse from 'html-react-parser';
 import { useParams } from "react-router-dom";
-// import Styled from "styled-components";
 import * as ReactBootStrap from "react-bootstrap";
-
-// const Banner = Styled.h1`
-// font-size: 24px;
-// color: turquoise;
-// `;
-
-// const SubTitle = Styled.h1`
-// font-size: 20px;
-// color: turquoise;
-// `;
-
+import '../Styled.css';
 
 const ListingDetails = ({ listingList }) => {
     const { id } = useParams();
     const jobDetails = listingList.find((job) => {
         return job.id === id ? job : null;
     });
+    
 
     return (
-        <div>
+    <>
+        <div class="container">
             <ReactBootStrap.Card style={{ width: '18rem' }}>
                     <ReactBootStrap.Card.Img variant="top" src={jobDetails.company_logo} />
                     <ReactBootStrap.Card.Body>
                         <ReactBootStrap.Card.Title>{jobDetails.title}</ReactBootStrap.Card.Title>
-                        <ReactBootStrap.Card.Text>
+                        <ReactBootStrap.Card.Text>Job Posted:
                         {jobDetails.created_at}
                         </ReactBootStrap.Card.Text>
                     </ReactBootStrap.Card.Body>
@@ -38,11 +29,18 @@ const ListingDetails = ({ listingList }) => {
                         <ReactBootStrap.ListGroupItem>{jobDetails.location}</ReactBootStrap.ListGroupItem>
                     </ReactBootStrap.ListGroup>
                     <ReactBootStrap.Card.Body>
-                        <ReactBootStrap.Card.Link href="#">{jobDetails.how_to_apply} Apply Here</ReactBootStrap.Card.Link>
-                        <ReactBootStrap.Card.Link href="#">{jobDetails.company_url}</ReactBootStrap.Card.Link>
+                        <ReactBootStrap.Card.Link href={parse(jobDetails.description)}>Full Details</ReactBootStrap.Card.Link>
+                        <ReactBootStrap.Card.Link href={jobDetails.company_url}>Visit Company Site</ReactBootStrap.Card.Link>
                     </ReactBootStrap.Card.Body>
             </ReactBootStrap.Card>
         </div>
+        <div class="container">
+            <h4>Apply Below</h4>
+        </div>
+        <div class="container">
+        <p>{parse(jobDetails.how_to_apply)}</p>
+        </div>
+    </>
     )
 
 

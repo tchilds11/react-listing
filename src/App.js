@@ -7,7 +7,6 @@ import ListingDetails from './components/ListingDetails';
 import * as ReactBootStrap from "react-bootstrap";
 // import './App.css';
 
-
 function App() {
 
 const [listingList, setlistingList]= useState([]);
@@ -25,14 +24,14 @@ const handleListingList = (status) => {
     <ReactBootStrap.Nav className="mr-auto">
       <ReactBootStrap.Nav.Link href="#features">Account Information</ReactBootStrap.Nav.Link>
       <ReactBootStrap.Nav.Link href="#pricing">Saved Listings</ReactBootStrap.Nav.Link>
-      <ReactBootStrap.NavDropdown title="Quick Links" id="collasible-nav-dropdown">
-        <ReactBootStrap.NavDropdown.Item href="#action/3.1">Java</ReactBootStrap.NavDropdown.Item>
-        <ReactBootStrap.NavDropdown.Item href="#action/3.2">Javascript</ReactBootStrap.NavDropdown.Item>
-        <ReactBootStrap.NavDropdown.Item href="#action/3.3">Redux</ReactBootStrap.NavDropdown.Item>
-        <ReactBootStrap.NavDropdown.Item href="#action/3.4">React</ReactBootStrap.NavDropdown.Item>
-		<ReactBootStrap.NavDropdown.Item href="#action/3.5">Python</ReactBootStrap.NavDropdown.Item>
-		<ReactBootStrap.NavDropdown.Item href="#action/3.6">Node</ReactBootStrap.NavDropdown.Item>
-		<ReactBootStrap.NavDropdown.Item href="#action/3.7">Express</ReactBootStrap.NavDropdown.Item>
+      <ReactBootStrap.NavDropdown title="External Quick Links" id="collasible-nav-dropdown">
+        <ReactBootStrap.NavDropdown.Item href="https://jobs.github.com/positions?utf8=%E2%9C%93&description=java&location=">Java</ReactBootStrap.NavDropdown.Item>
+        <ReactBootStrap.NavDropdown.Item href="https://jobs.github.com/positions?utf8=%E2%9C%93&description=javascript&location=">Javascript</ReactBootStrap.NavDropdown.Item>
+        <ReactBootStrap.NavDropdown.Item href="https://jobs.github.com/positions?utf8=%E2%9C%93&description=redux&location=">Redux</ReactBootStrap.NavDropdown.Item>
+        <ReactBootStrap.NavDropdown.Item href="https://jobs.github.com/positions?utf8=%E2%9C%93&description=react&location=">React</ReactBootStrap.NavDropdown.Item>
+		<ReactBootStrap.NavDropdown.Item href="https://jobs.github.com/positions?utf8=%E2%9C%93&description=python&location=">Python</ReactBootStrap.NavDropdown.Item>
+		<ReactBootStrap.NavDropdown.Item href="https://jobs.github.com/positions?utf8=%E2%9C%93&description=node&location=">Node</ReactBootStrap.NavDropdown.Item>
+		<ReactBootStrap.NavDropdown.Item href="https://jobs.github.com/positions?utf8=%E2%9C%93&description=express&location=">Express</ReactBootStrap.NavDropdown.Item>
       </ReactBootStrap.NavDropdown>
     </ReactBootStrap.Nav>
     <ReactBootStrap.Nav>
