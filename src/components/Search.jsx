@@ -43,7 +43,7 @@ const SearchForm = ({handleListingList}) => {
                         <ReactBootStrap.Form.Group controlId="formBasicCheckbox">
                             <ReactBootStrap.Form.Check type="checkbox" label="Save My Search" />
                         </ReactBootStrap.Form.Group>
-                        <ReactBootStrap.Button variant="primary" type="submit" onClick={_handleSubmit}>
+                        <ReactBootStrap.Button variant="primary" data-testid="search-button" type="submit" onClick={_handleSubmit}>
                             Search
                         </ReactBootStrap.Button>
                 </ReactBootStrap.Form>
