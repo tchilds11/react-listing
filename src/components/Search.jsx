@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { Route } from "react-router-dom";
+import * as ReactBootStrap from "react-bootstrap";
 import '../Style.css';
 
 const SearchForm = ({handleListingList}) => {
@@ -25,17 +26,28 @@ const SearchForm = ({handleListingList}) => {
         return (
             <>
                 <div>
-                    <Route exact path='/'>
-                    <form onSubmit={_handleSubmit}>
-                        <div className="container">
-                            <h2 className="heading"> Listing Lounge</h2>
-                            <label className="search-label" htmlFor="search-input">
-                                <input type="text" value={jobs} id="search-input" placeholder="Search..." onChange={_handleChange}/>
-                                <button type="submit" onClick={_handleSubmit} className="fa fa-search search-icon"></button>
-                            </label>
-                        </div>
-                    </form>
-                    </Route>
+                <Route exact path='/'>
+                <ReactBootStrap.Form onSubmit={_handleSubmit}>
+                        <ReactBootStrap.Form.Group controlId="formBasicEmail">
+                            <ReactBootStrap.Form.Label>Job Title</ReactBootStrap.Form.Label>
+                            <ReactBootStrap.Form.Control type="text" onChange={_handleChange} value={jobs} placeholder="Enter Keywords" />
+                            <ReactBootStrap.Form.Text className="text-muted">
+                            We'll never share your searches with anyone else.
+                            </ReactBootStrap.Form.Text>
+                        </ReactBootStrap.Form.Group>
+
+                        <ReactBootStrap.Form.Group controlId="formBasicPassword">
+                            <ReactBootStrap.Form.Label>Location</ReactBootStrap.Form.Label>
+                            <ReactBootStrap.Form.Control type="text" placeholder="📍 Enter City" />
+                        </ReactBootStrap.Form.Group>
+                        <ReactBootStrap.Form.Group controlId="formBasicCheckbox">
+                            <ReactBootStrap.Form.Check type="checkbox" label="Save My Search" />
+                        </ReactBootStrap.Form.Group>
+                        <ReactBootStrap.Button variant="primary" type="submit" onClick={_handleSubmit}>
+                            Search
+                        </ReactBootStrap.Button>
+                </ReactBootStrap.Form>
+                </Route>
                 </div>    
             </>
         )

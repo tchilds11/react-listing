@@ -1,19 +1,20 @@
 import { Link } from 'react-router-dom';
+import * as ReactBootStrap from "react-bootstrap";
 
 
 
 const ListingList = ({listingList}) => {
     return (
         <>
-            <ul>
+            <ReactBootStrap.ListGroup variant="flush">
                 {listingList.map((job, index) => {
                     return(
-                        <li key={index}>
+                        <ReactBootStrap.ListGroup.Item key={index}>
                             <Link to ={`/jobs/${job.id}`}>{job.title} - {job.type} - {job.location}</Link>
-                        </li>
+                        </ReactBootStrap.ListGroup.Item>
                     );
                 })};
-            </ul>
+            </ReactBootStrap.ListGroup>
         </>
     );
 };

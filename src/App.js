@@ -16,10 +16,9 @@ const handleListingList = (status) => {
 	setlistingList(status)
 }
 
-
 	return (
 	  <div className="App">
-		  <ReactBootStrap.Navbar collapseOnSelect expand="xl" bg="dark" variant="dark">
+		  <ReactBootStrap.Navbar sticky="top" collapseOnSelect expand="xl" bg="dark" variant="dark">
   <ReactBootStrap.Navbar.Brand href="/">Listing Lounge</ReactBootStrap.Navbar.Brand>
   <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
@@ -37,9 +36,9 @@ const handleListingList = (status) => {
       </ReactBootStrap.NavDropdown>
     </ReactBootStrap.Nav>
     <ReactBootStrap.Nav>
-      <ReactBootStrap.Nav.Link href="#deets">Contact Us</ReactBootStrap.Nav.Link>
+      <ReactBootStrap.Nav.Link href="#deets">About The Developer</ReactBootStrap.Nav.Link>
       <ReactBootStrap.Nav.Link eventKey={2} href="#memes">
-        About The Developer
+        Log Out
       </ReactBootStrap.Nav.Link>
     </ReactBootStrap.Nav>
   </ReactBootStrap.Navbar.Collapse>
@@ -47,15 +46,12 @@ const handleListingList = (status) => {
 		<Router>
 			<Route exact path='/'>
 				<Search handleListingList={handleListingList} />
-				{listingList.length !== 0 ?
 				<ListingList listingList={listingList}/> : 
-				<h2>No Listings Found...</h2>
-			}
 			</Route>
 			<Route path='/jobs/:id'>
 				{listingList.length !== 0 ?
 				<ListingDetails listingList={listingList}/> : 
-				<h3>No Listings Found...</h3>
+				<ReactBootStrap.Spinner animation="border" />
 			}
 			</Route>
 		</Router>
