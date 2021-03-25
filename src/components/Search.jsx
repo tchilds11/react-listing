@@ -1,57 +1,56 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useState } from 'react';
+import { Route } from "react-router-dom";
+import * as ReactBootStrap from "react-bootstrap";
 import '../Style.css';
-import ListingList from './ListingList';
 
-class Search extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            jobQuery:'',
-            jobResults: [],
-        };
-    }
+const SearchForm = ({handleListingList}) => {
+    const [jobs, setJobs] = useState('');
 
 
-    _handleChange = (e) => {
-        this.setState({
-          jobQuery: e.target.value,
-        });
+    const _handleChange = (e) => {
+        setJobs(e.target.value)
       };
     
-      _handleSubmit = async (e) => {
+    const _handleSubmit = async (e) => {
         e.preventDefault();
-        const { jobQuery } = this.state;
-        const jobResultsData = await fetch(`http://127.0.0.1:3001/jobs/?url=https://jobs.github.com/positions.json?description=${jobQuery}` ,{
+        const jobResults = await fetch(`http://127.0.0.1:3001/jobs/?url=https://jobs.github.com/positions.json?description=${jobs}` ,{
             method: 'GET',
             headers: { 'Content-Type': 'application/json'}
         }).then((response) => response.json())
-        console.log(jobResultsData);
-        this.setState({
-            jobResults: [...this.state.jobResults, jobResultsData],
-            jobQuery: '',
-        })
-      };
+        console.log("search results", jobResults);
+        handleListingList(jobResults);
+      }
  
 
-    render() {
-        const { jobQuery } = this.state
         return (
             <>
                 <div>
-                    <form>
-                        <div className="container">
-                            <h2 className="heading"> Listing Lurker</h2>
-                            <label className="search-label" htmlFor="search-input">
-                                <input type="text" value={jobQuery} id="search-input" placeholder="Search..." onChange={this._handleChange
-                        }/>
-                                <button type="submit" onClick={this._handleSubmit} className="fa fa-search search-icon"></button>
-                            </label>
-                        </div>
-                    </form>
-                    {this.state.jobResults.length ? (<ListingList jobs={this.state.jobResults}/>) : <p>No users...</p>}
+                <Route exact path='/'>
+                <ReactBootStrap.Form onSubmit={_handleSubmit}>
+                        <ReactBootStrap.Form.Group controlId="formBasicEmail">
+                            <ReactBootStrap.Form.Label>Job Title</ReactBootStrap.Form.Label>
+                            <ReactBootStrap.Form.Control type="text" onChange={_handleChange} value={jobs} placeholder="Enter Keywords" />
+                            <ReactBootStrap.Form.Text className="text-muted">
+                            We'll never share your searches with anyone else.
+                            </ReactBootStrap.Form.Text>
+                        </ReactBootStrap.Form.Group>
+
+                        <ReactBootStrap.Form.Group controlId="formBasicPassword">
+                            <ReactBootStrap.Form.Label>Location</ReactBootStrap.Form.Label>
+                            <ReactBootStrap.Form.Control type="text" placeholder="📍  Enter City, State or Zip" />
+                        </ReactBootStrap.Form.Group>
+                        <ReactBootStrap.Form.Group controlId="formBasicCheckbox">
+                            <ReactBootStrap.Form.Check type="checkbox" label="Save My Search" />
+                        </ReactBootStrap.Form.Group>
+                        <ReactBootStrap.Button variant="primary" data-testid="search-button" type="submit" onClick={_handleSubmit}>
+                            Search
+                        </ReactBootStrap.Button>
+                </ReactBootStrap.Form>
+                </Route>
                 </div>    
             </>
         )
-    }}
+    }
 
-export default Search; 
+export default SearchForm; 
