@@ -35,8 +35,8 @@ const handleListingList = (status) => {
       </ReactBootStrap.NavDropdown>
     </ReactBootStrap.Nav>
     <ReactBootStrap.Nav>
-      <ReactBootStrap.Nav.Link href="#deets">About The Developer</ReactBootStrap.Nav.Link>
-      <ReactBootStrap.Nav.Link eventKey={2} href="#memes">
+      <ReactBootStrap.Nav.Link href="https://www.linkedin.com/in/terrence-childs-3a0b50139/">About The Developer</ReactBootStrap.Nav.Link>
+      <ReactBootStrap.Nav.Link eventKey={2} href="/">
         Log Out
       </ReactBootStrap.Nav.Link>
     </ReactBootStrap.Nav>

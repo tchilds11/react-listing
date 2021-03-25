@@ -38,7 +38,7 @@ const SearchForm = ({handleListingList}) => {
 
                         <ReactBootStrap.Form.Group controlId="formBasicPassword">
                             <ReactBootStrap.Form.Label>Location</ReactBootStrap.Form.Label>
-                            <ReactBootStrap.Form.Control type="text" placeholder="📍 Enter City" />
+                            <ReactBootStrap.Form.Control type="text" placeholder="📍  Enter City, State or Zip" />
                         </ReactBootStrap.Form.Group>
                         <ReactBootStrap.Form.Group controlId="formBasicCheckbox">
                             <ReactBootStrap.Form.Check type="checkbox" label="Save My Search" />
